@@ -5,10 +5,12 @@ library(proxy)  # For Jaccard similarity calculation
 require(ape)
 ## 1) DATA imports
 setwd("C:/Users/jzs19xhz/OneDrive - The Royal Botanic Gardens, Kew/CFP_Non-native_Trees") #Set path
+scripts_path<-"./Code"
+predictions_path<-"~/Outputs"
 host_status_df<-read.csv("./Data/CABI_HostMatrix_Cleaned.csv") # InputHSM
 megatree <-read.tree("./Data/accepted_minitree_EURO_FI.tre") #Phylo, phylogenetic tree
 
-### 2) Run lines 12-707
+### 2) Run lines 15-709
 
 hosts <- host_status_df[, 1]               
 status_df <- host_status_df[, -1]     
@@ -577,8 +579,8 @@ generate_model_script <- function(cluster, threat) {
   if (length(cluster) <= 1) {
     # Write a CSV with the specified message
     final_script<-paste0("message_df <- data.frame(Message = \"No significantly related, non-redundant threats\") \n
-                         write.csv(message_df, file = paste0(\"~/Outputs/predictions_", threat, ".csv\"), row.names = FALSE)")
-    writeLines(final_script, paste0("./Code/Min_2_hosts_inputs/model_", threat, ".R"))
+                         write.csv(message_df, file = paste0(",predictions_path,"\"/predictions_", threat, ".csv\"), row.names = FALSE)")
+    writeLines(final_script, paste0(scripts_path,"/Min_2_hosts_inputs/model_", threat, ".R"))
   }
   else{
     print(paste0("Threat cluster for ", threat, " length: ",length(cluster)))
@@ -674,10 +676,10 @@ generate_model_script <- function(cluster, threat) {
 final_script <- paste0(
   modelcommand, priorscommand,the_rest,
   "\n # Save predictions\n",
-  "write.csv(predictions_NNT, \"~/Outputs/predictions_", threat, ".csv\")\n"
+  "write.csv(predictions_NNT, ",predictions_path,"\"/predictions_", threat, ".csv\")\n"
 )
 
-writeLines(final_script, paste0("./Code/Min_2_hosts_inputs/model_", threat, ".R"))
+writeLines(final_script, paste0(scripts_path,"/Min_2_hosts_inputs/model_", threat, ".R"))
   }
 }
 
@@ -709,5 +711,3 @@ MASTER_FUNCTION <- function(threats_vector, min_hosts) {
 ##   and scripts for model running. set minimum hosts as desired, 2 is recommended 
 ##   default
 MASTER_FUNCTION(threats_vector=colnames(host_status_df[,2:200]),min_hosts=2)
-
-
