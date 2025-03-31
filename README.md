@@ -1,7 +1,6 @@
 # CFP2204
 Code for the Centre for Forest Protection Project 2204 - Predicting risks to non-native species from potential threats in the UK
-© Crown copyright 2021
-This information is licensed under the Open Government Licence v3.0. To view this licence, visit www.nationalarchives.gov.uk/doc/open-government-licence/
+© CC BY-ND 4.0
 
 This repository contains the script necessary to generate BRMS modelling scripts like those used in the CFP2204 project "Predicting risks to non-native species from potential threats in the UK" (Clustering and script generation.R) and an exemplar script of what will be produced (Exemplar_model_script-Adelges_piceae.R).
 
