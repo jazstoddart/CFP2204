@@ -4,11 +4,11 @@ library(cluster)
 library(proxy)  # For Jaccard similarity calculation
 require(ape)
 ## 1) DATA imports
-setwd("C:/Users/jzs19xhz/OneDrive - The Royal Botanic Gardens, Kew/CFP_Non-native_Trees") #Set path
-scripts_path<-"./Code"
-predictions_path<-"~/Outputs"
-host_status_df<-read.csv("./Data/CABI_HostMatrix_Cleaned.csv") # InputHSM
-megatree <-read.tree("./Data/accepted_minitree_EURO_FI.tre") #Phylo, phylogenetic tree
+setwd("path/to/working/directory") #Set path
+scripts_path<-"./path/to/scripts"
+predictions_path<-"./path/for/outputs/of/modelling"
+host_status_df<-read.csv("./path/to/HSM/input/file") # InputHSM
+megatree <-read.tree("./path/to/phylogenetic/tree") #Phylo, phylogenetic tree
 
 ### 2) Run lines 15-709
 
